@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+
+    <style>
+        .validationError {
+            color: red;
+        }
+    </style>
+
+</head>
+<body>
+
+    <form method="POST" th:object="${user}" action="#" th:action="@{/sign-up}">
+
+        <span class="validationError"
+              th:if="${#fields.hasErrors('email')}"
+              th:errors="*{email}">Email Error</span>
+        <input type="text" placeholder="email" th:field="*{email}">
+        <br><br>
+
+        <span class="validationError"
+              th:if="${#fields.hasErrors('password')}"
+              th:errors="*{password}">Password error</span>
+        <input type="password" placeholder="password" th:field="*{password}">
+        <br><br>
+
+        <span class="validationError"
+              th:if="${#fields.hasGlobalErrors()}"
+              th:text="${#fields.globalErrors()}">Field matching error</span>
+        <input type="password" placeholder="confirm password" th:field="*{matchingPassword}">
+        <br><br>
+
+        <input type="submit" value="Register">
+
+    </form>
+
+</body>
+</html>
