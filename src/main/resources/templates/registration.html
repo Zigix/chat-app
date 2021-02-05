@@ -18,6 +18,12 @@
     <form method="POST" th:object="${user}" action="#" th:action="@{/sign-up}">
 
         <span class="validationError"
+              th:if="${#fields.hasErrors('username')}"
+              th:errors="*{username}">Username Error</span>
+        <input type="text" placeholder="username" th:field="*{username}">
+        <br><br>
+
+        <span class="validationError"
               th:if="${#fields.hasErrors('email')}"
               th:errors="*{email}">Email Error</span>
         <input type="text" placeholder="email" th:field="*{email}">

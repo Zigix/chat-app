@@ -21,6 +21,7 @@ public class AppUser implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String username;
     private String email;
     private String password;
 
@@ -31,7 +32,8 @@ public class AppUser implements UserDetails {
     private Boolean locked = false;
 
 
-    public AppUser(String email, String password, AppUserRole authority) {
+    public AppUser(String username, String email, String password, AppUserRole authority) {
+        this.username = username;
         this.email = email;
         this.password = password;
         this.authority = authority;
@@ -53,7 +55,7 @@ public class AppUser implements UserDetails {
 
     @Override
     public String getUsername() {
-        return email;
+        return username;
     }
 
     @Override

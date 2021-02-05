@@ -1,13 +1,10 @@
 package com.zigix.chatapp.registration;
 
-import com.zigix.chatapp.validation.FieldMatch;
-import com.zigix.chatapp.validation.SecurityType;
-import com.zigix.chatapp.validation.UniqueUsername;
-import com.zigix.chatapp.validation.ValidPassword;
+import com.zigix.chatapp.validation.*;
 import lombok.*;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
@@ -16,11 +13,16 @@ import javax.validation.constraints.NotEmpty;
 @FieldMatch(first = "password", second = "matchingPassword")
 public class AppUserDTO {
 
+    @NotBlank(message = " is required")
+    @UniqueUsername
+    private String username;
+
+    @NotBlank(message = " is required")
     @Email(message = " invalid email format")
-    @UniqueUsername(message = " this email already exists")
-    @NotEmpty(message = " is required")
+    @UniqueEmail
     private String email;
 
+    @NotBlank(message = " is required")
     @ValidPassword(security = SecurityType.WEAK)
     private String password;
 

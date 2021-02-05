@@ -28,6 +28,7 @@ public class RegistrationService {
     public void register(AppUserDTO appUserDTO) {
         AppUser appUser = new AppUser();
 
+        appUser.setUsername(appUserDTO.getUsername());
         appUser.setEmail(appUserDTO.getEmail());
         appUser.setPassword(encoder.encode(appUserDTO.getPassword()));
         appUser.setAuthority(AppUserRole.USER);
@@ -66,6 +67,7 @@ public class RegistrationService {
         }
 
         String link = "http://localhost:8080/sign-up/confirm?token=" + token;
+        emailContent = emailContent.replace("$@username@$", appUser.getUsername());
         emailContent = emailContent.replace("$@link@$", link);
 
         emailSenderService.sendEmail(appUser.getEmail(), emailContent);

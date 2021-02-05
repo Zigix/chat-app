@@ -17,15 +17,19 @@ public class AppUserService implements UserDetailsService {
     private final AppUserRepository appUserRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return appUserRepository
-                .findByEmail(email)
+                .findByUsername(username)
                 .orElseThrow(() ->
-                        new UsernameNotFoundException("User with email " + email + " not found"));
+                        new UsernameNotFoundException("User with username " + username + " not found"));
     }
 
     public Optional<AppUser> findByUsername(String username) {
-        return appUserRepository.findByEmail(username);
+        return appUserRepository.findByUsername(username);
+    }
+
+    public Optional<AppUser> findByEmail(String email) {
+        return appUserRepository.findByEmail(email);
     }
 
     @Transactional
