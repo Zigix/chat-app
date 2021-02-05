@@ -1,14 +1,12 @@
 package com.zigix.chatapp;
 
 import com.zigix.chatapp.entity.AppUser;
-import com.zigix.chatapp.entity.AppUserRole;
-import com.zigix.chatapp.registration.AppUserDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -17,7 +15,6 @@ import java.util.Optional;
 public class AppUserService implements UserDetailsService {
 
     private final AppUserRepository appUserRepository;
-    private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -31,16 +28,13 @@ public class AppUserService implements UserDetailsService {
         return appUserRepository.findByEmail(username);
     }
 
+    @Transactional
+    public AppUser saveAppUser(AppUser appUser) {
+        return appUserRepository.saveAndFlush(appUser);
+    }
 
-    public void signUpUser(AppUserDTO appUserDTO) {
-        AppUser appUser = new AppUser();
-
-        appUser.setEmail(appUserDTO.getEmail());
-        appUser.setPassword(encoder.encode(appUserDTO.getPassword()));
-        appUser.setAuthority(AppUserRole.USER);
-
-        // TODO: send email with confirmation token
-
-        appUserRepository.save(appUser);
+    @Transactional
+    public int enableAppUserAccount(String email) {
+        return appUserRepository.enableAppUserAccount(email);
     }
 }

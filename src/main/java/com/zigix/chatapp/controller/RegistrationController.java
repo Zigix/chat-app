@@ -2,14 +2,12 @@ package com.zigix.chatapp.controller;
 
 import com.zigix.chatapp.AppUserService;
 import com.zigix.chatapp.registration.AppUserDTO;
+import com.zigix.chatapp.registration.RegistrationService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -18,7 +16,7 @@ import javax.validation.Valid;
 @AllArgsConstructor
 public class RegistrationController {
 
-    private final AppUserService appUserService;
+    private final RegistrationService registrationService;
 
     @GetMapping
     public String showSignUpForm(Model model) {
@@ -35,9 +33,15 @@ public class RegistrationController {
             return "registration";
         }
 
-        // sign up user using service
-        appUserService.signUpUser(appUserDTO);
+        registrationService.register(appUserDTO);
 
         return "registration-successful";
+    }
+
+    @GetMapping("/confirm")
+    public String confirm(@RequestParam("token") String token) {
+        registrationService.confirmToken(token);
+
+        return "email-confirmed";
     }
 }
