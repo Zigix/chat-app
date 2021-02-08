@@ -1,0 +1,110 @@
+html, body {
+    /* Background pattern from Toptal Subtle Patterns */
+    background-image: url(../img/prism.png);
+    margin: 0;
+    height: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+}
+
+.main-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 900px;
+    height: 100%;
+}
+
+.greeting {
+    font-size: 72px;
+    margin: 40px;
+    text-align: center;
+}
+
+.user-form-container {
+    width: 450px;
+    min-height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    border: 3px solid #05c705c9;
+    background-color: #1b1b1b;
+}
+
+.form-item {
+    margin: 22px 30px 22px 30px;
+}
+
+.form-header {
+    font-size: 28px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+form {
+    padding: 0 40px 5px 40px;
+}
+
+input {
+    width: 250px;
+    outline: none;
+    padding: 10px;
+    border-radius: 10px;
+    border: 3px solid green;
+}
+
+input:focus {
+    box-shadow: 0 0 7px 2px #21FF38;
+}
+
+button {
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 22px;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.button-submit {
+    width: 276px;
+    background-color: #3ec45c;
+    border: 3px solid #1ca23a;
+}
+
+.button-submit:hover {
+    background-color: #2db34b;
+}
+
+.button-submit:focus {
+    box-shadow: 0 0 5px 2px #21FF38;
+}
+
+#redirect-sign-up {
+    width: 150px;
+    background-color: #5555ed;
+    border: 3px solid #3333cb;
+}
+
+#redirect-sign-up:hover {
+    background-color: #4444dc;
+}
+
+#redirect-sign-up:focus {
+    box-shadow: 0 0 5px 2px #418fc9;
+}
+
+#account-question {
+    padding: 5px 0 18px 0;
+}
+
+.validationError {
+    font-size: 14px;
+    display: block;
+    color: red;
+    padding-bottom: 5px;
+}
+
+.error-on-input {
+    border: 3px solid red;
+}

@@ -4,46 +4,86 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Registration</title>
+    <title>Register to Chat App</title>
 
-    <style>
-        .validationError {
-            color: red;
-        }
-    </style>
+    <link th:href="@{/css/main.css}" type="text/css" rel="stylesheet">
+    <script th:src="@{/js/validation.js}"></script>
 
 </head>
 <body>
 
-    <form method="POST" th:object="${user}" action="#" th:action="@{/sign-up}">
+<div class="main-container">
 
-        <span class="validationError"
-              th:if="${#fields.hasErrors('username')}"
-              th:errors="*{username}">Username Error</span>
-        <input type="text" placeholder="username" th:field="*{username}">
-        <br><br>
+    <div class="greeting">
+        <i>Welcome to chat!</i>
+    </div>
 
-        <span class="validationError"
-              th:if="${#fields.hasErrors('email')}"
-              th:errors="*{email}">Email Error</span>
-        <input type="text" placeholder="email" th:field="*{email}">
-        <br><br>
+    <div class="user-form-container">
 
-        <span class="validationError"
-              th:if="${#fields.hasErrors('password')}"
-              th:errors="*{password}">Password error</span>
-        <input type="password" placeholder="password" th:field="*{password}">
-        <br><br>
+        <div class="form-item">
+            <div class="form-header">
+                Register to chat
+            </div>
+        </div>
 
-        <span class="validationError"
-              th:if="${#fields.hasGlobalErrors()}"
-              th:text="${#fields.globalErrors()}">Field matching error</span>
-        <input type="password" placeholder="confirm password" th:field="*{matchingPassword}">
-        <br><br>
+        <div class="form-item">
+            <div>
 
-        <input type="submit" value="Register">
+            </div>
+        </div>
 
-    </form>
+
+        <form th:object="${user}" action="#" th:action="@{/sign-up}" method="POST">
+            <div class="form-item">
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('username')}"
+                      th:errors="*{username}">Username Error</span>
+                <input type="text" placeholder="username"
+                       id="username" th:field="*{username}">
+            </div>
+
+            <div class="form-item">
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('email')}"
+                      th:errors="*{email}">Email Error</span>
+                <input type="text" placeholder="email"
+                       id="email" th:field="*{email}">
+            </div>
+
+            <div class="form-item">
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('password')}"
+                      th:errors="*{password}">Password error</span>
+                <input type="password" placeholder="password"
+                       id="password" th:field="*{password}">
+            </div>
+
+            <div class="form-item">
+                <span class="validationError"
+                      th:if="${#fields.hasGlobalErrors()}"
+                      th:text="${#fields.globalErrors()}">Field matching error</span>
+                <input type="password" placeholder="confirm password"
+                       id="confirm-password" th:field="*{matchingPassword}">
+            </div>
+
+            <div class="form-item">
+                <button type="submit" class="button-submit">Sign up</button>
+            </div>
+        </form>
+
+        <div class="form-item">
+            <div id="account-question">
+                Back to login page
+            </div>
+
+            <a th:href="@{/login}">
+                <button type="button" id="redirect-sign-up">Back</button>
+            </a>
+
+        </div>
+
+    </div>
+</div>
 
 </body>
 </html>
