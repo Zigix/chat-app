@@ -10,19 +10,18 @@ import javax.validation.constraints.NotBlank;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@FieldMatch(first = "password", second = "matchingPassword")
+@FieldMatch(first = "password", second = "matchingPassword", message = "Confirmed password doesn't match")
 public class AppUserDTO {
 
-    @NotBlank(message = " is required")
+    @NotBlank(message = "Username is required")
     @UniqueUsername
     private String username;
 
-    @NotBlank(message = " is required")
+    @NotBlank(message = "Email is required")
     @Email(message = " invalid email format")
     @UniqueEmail
     private String email;
 
-    @NotBlank(message = " is required")
     @ValidPassword(security = SecurityType.WEAK)
     private String password;
 

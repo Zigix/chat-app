@@ -11,7 +11,7 @@ html, body {
 .main-container {
     margin-left: auto;
     margin-right: auto;
-    width: 900px;
+    width: 95%;
     height: 100%;
 }
 
@@ -107,4 +107,141 @@ button {
 
 .error-on-input {
     border: 3px solid red;
+}
+
+.error-on-input:focus {
+    box-shadow: 0 0 5px 2px red;
+}
+
+
+/* chat styling */
+
+.chat-container {
+    width: 600px;
+    padding: 20px;
+    overflow: auto;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #1b1b1b;
+    margin-top: 30px;
+    border-radius: 10px;
+    border: 3px solid green;
+}
+
+.chat-title {
+    width: 100%;
+    text-align: center;
+    font-size: 40px;
+    padding: 3px;
+    margin-bottom: 5px;
+}
+
+.message-area {
+    height: 500px;
+    border-radius: 10px;
+    border: 3px solid green;
+    padding: 10px;
+    margin-bottom: 12px;
+}
+
+.input-area {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#message-input {
+    width: 436px;
+    padding: 12px;
+    margin-right: 3px;
+}
+
+#message-input:focus {
+    box-shadow: 0 0 2px 1px #21FF38;
+}
+
+#button-send {
+    width: 148px;
+    background-color: #6666eb;
+    font-size: 20px;
+    border: 3px solid #0000ff;
+    margin-left: 3px;
+}
+
+#button-send:focus {
+    box-shadow: 0 0 2px 1px #005fff;
+}
+
+#button-send:hover {
+    background-color: #5555da;
+    cursor: pointer;
+}
+
+ul li p {
+    margin: 0;
+}
+
+.message-area {
+    overflow: auto;
+}
+
+.message-area ul {
+    list-style-type: none;
+    padding: 0 20px 0 20px;
+    margin: 0;
+}
+
+.message-area ul li {
+    line-height: 1.5rem;
+    padding: 15px 10px;
+    margin: 0;
+    border-bottom: 1px solid #4f4f4f;
+}
+
+.event-message {
+    text-align: center;
+}
+
+.event-message p {
+    font-size: 14px;
+    color: gray;
+    word-wrap: break-word;
+}
+
+.user-message {
+    position: relative;
+    padding-left: 50px;
+}
+
+.user-message i {
+    position: absolute;
+    display: inline-block;
+    left: 10px;
+    overflow: hidden;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: green;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 22px;
+    text-transform: uppercase;
+    font-style: normal;
+    line-height: 45px;
+}
+
+.user-message span {
+    position: absolute;
+    left: 65px;
+    top: 20px;
+    font-size: 18px;
+    color: honeydew;
+    font-weight: 600;
+}
+
+.user-message p {
+    padding-top: 50px;
+    font-size: 16px;
+    color: lightslategray;
+    text-align: left;
 }

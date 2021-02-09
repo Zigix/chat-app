@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Log in to Chat App</title>
+
+    <link th:href="@{/css/main.css}" type="text/css" rel="stylesheet">
+
+</head>
+<body onload="connect()">
+
+    <input id="name" type="hidden" th:value="${username}">
+
+    <div class="chat-container">
+        <div class="chat-title">
+            <div>
+                Public Chat
+            </div>
+        </div>
+        <div class="message-area">
+            <ul id="message-list">
+
+            </ul>
+        </div>
+        <div class="input-area">
+            <input type="text" id="message-input" placeholder="Type your message">
+            <button type="submit" id="button-send" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+</div>
+
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+
+    <script th:src="@{js/chat.js}"></script>
+
+</body>
+</html>
