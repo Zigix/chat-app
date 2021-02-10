@@ -2,6 +2,7 @@
 
 var messageInput = document.querySelector('#message-input');
 var messageList = document.querySelector('#message-list');
+var activeUsersList = document.querySelector('.active-users-list');
 
 var username = null;
 var stompClient = null;
@@ -56,8 +57,11 @@ function onMessageReceived(payload) {
 
     if(message.type === 'JOIN') {
         messageElement.classList.add('event-message');
-
         message.content = message.sender + ' has joined!';
+    }
+    else if(message.type === 'LEAVE') {
+        messageElement.classList.add('event-message');
+        message.content = message.sender + ' has left!';
     }
     else if(message.type === 'CHAT') {
         messageElement.classList.add('user-message');
@@ -75,13 +79,35 @@ function onMessageReceived(payload) {
 
         messageElement.appendChild(userElement);
     }
+    else if(message.type === 'UPDATE') {
+        activeUsersList.innerHTML = '';
+        for(let activeUser of message.activeUsers) {
+            var activeUserElement = document.createElement('li');
+            var activeUserAvatarElement = document.createElement('i');
+            var activeUsernameElement = document.createElement('span');
 
-    var textElement = document.createElement('p');
-    var messageText = document.createTextNode(message.content);
-    textElement.appendChild(messageText);
-    messageElement.appendChild(textElement);
+            var activeUserAvatarText = document.createTextNode(activeUser.charAt(0));
+            activeUserAvatarElement.appendChild(activeUserAvatarText);
+            activeUserAvatarElement.style['background'] = getAvatarColor(activeUser);
 
-    messageList.appendChild(messageElement);
+            var activeUsernameText = document.createTextNode(activeUser);
+            activeUsernameElement.appendChild(activeUsernameText);
+
+            activeUserElement.appendChild(activeUserAvatarElement);
+            activeUserElement.appendChild(activeUsernameElement);
+
+            activeUsersList.appendChild(activeUserElement);
+        }
+    }
+
+    if(message.type !== 'UPDATE') {
+        var textElement = document.createElement('p');
+        var messageText = document.createTextNode(message.content);
+        textElement.appendChild(messageText);
+        messageElement.appendChild(textElement);
+
+        messageList.appendChild(messageElement);
+    }
 }
 
 function getAvatarColor(name) {

@@ -14,8 +14,10 @@ public class ChatMessage {
     private String sender;
     private String content;
     private MessageType type;
+    private String[] activeUsers;
 
     public enum MessageType {
-        CHAT, JOIN
+        CHAT, JOIN, LEAVE, UPDATE
     }
+
 }

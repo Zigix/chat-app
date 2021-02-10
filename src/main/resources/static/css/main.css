@@ -120,15 +120,17 @@ button {
     width: 600px;
     padding: 20px;
     overflow: auto;
-    margin-left: auto;
-    margin-right: auto;
+    /*margin-left: auto;
+    margin-right: auto;*/
+    float: left;                        /*FIXME*/
+    margin-left: 20px;                  /*FIXME*/
     background-color: #1b1b1b;
     margin-top: 30px;
     border-radius: 10px;
     border: 3px solid green;
 }
 
-.chat-title {
+.chat-title, .active-users-title {
     width: 100%;
     text-align: center;
     font-size: 40px;
@@ -136,7 +138,7 @@ button {
     margin-bottom: 5px;
 }
 
-.message-area {
+.message-area, .active-users-area {
     height: 500px;
     border-radius: 10px;
     border: 3px solid green;
@@ -181,17 +183,17 @@ ul li p {
     margin: 0;
 }
 
-.message-area {
+.message-area, .active-users-area {
     overflow: auto;
 }
 
-.message-area ul {
+.message-area ul, .active-users-area ul {
     list-style-type: none;
     padding: 0 20px 0 20px;
     margin: 0;
 }
 
-.message-area ul li {
+.message-area ul li, .active-users-area ul li {
     line-height: 1.5rem;
     padding: 15px 10px;
     margin: 0;
@@ -208,12 +210,12 @@ ul li p {
     word-wrap: break-word;
 }
 
-.user-message {
+.user-message, .active-users-list li {
     position: relative;
     padding-left: 50px;
 }
 
-.user-message i {
+.user-message i, .active-users-list li i {
     position: absolute;
     display: inline-block;
     left: 10px;
@@ -230,7 +232,7 @@ ul li p {
     line-height: 45px;
 }
 
-.user-message span {
+.user-message span, .active-users-list li span {
     position: absolute;
     left: 65px;
     top: 20px;
@@ -244,4 +246,26 @@ ul li p {
     font-size: 16px;
     color: lightslategray;
     text-align: left;
+}
+
+
+/* Active users style */
+.active-users-container {
+    width: 300px;
+    float: left;
+    height: 641px;
+    padding: 20px;
+    background-color: #1b1b1b;
+    margin-top: 30px;
+    border-radius: 10px;
+    border: 3px solid green;
+    margin-right: 20px;
+}
+
+.active-users-area {
+    height: 558px;
+}
+
+.active-users-list li {
+    min-height: 45px;
 }
