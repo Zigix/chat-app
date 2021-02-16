@@ -46,6 +46,7 @@ form {
 }
 
 input {
+    font-weight: 600;
     width: 250px;
     outline: none;
     padding: 10px;
@@ -120,17 +121,17 @@ button {
     width: 600px;
     padding: 20px;
     overflow: auto;
-    /*margin-left: auto;
-    margin-right: auto;*/
-    float: left;                        /*FIXME*/
-    margin-left: 20px;                  /*FIXME*/
+    float: left;
+    margin-left: 20px;
+    margin-right: 20px;
     background-color: #1b1b1b;
     margin-top: 30px;
     border-radius: 10px;
     border: 3px solid green;
+    position: relative;
 }
 
-.chat-title, .active-users-title {
+.chat-title, .active-users-title, .private-users-title {
     width: 100%;
     text-align: center;
     font-size: 40px;
@@ -138,7 +139,7 @@ button {
     margin-bottom: 5px;
 }
 
-.message-area, .active-users-area {
+.message-area, .active-users-area, .private-users-area {
     height: 500px;
     border-radius: 10px;
     border: 3px solid green;
@@ -170,11 +171,11 @@ button {
     margin-left: 3px;
 }
 
-#button-send:focus {
+#button-send:focus, #public-chat-btn:focus {
     box-shadow: 0 0 2px 1px #005fff;
 }
 
-#button-send:hover {
+#button-send:hover, #public-chat-btn:hover {
     background-color: #5555da;
     cursor: pointer;
 }
@@ -183,17 +184,17 @@ ul li p {
     margin: 0;
 }
 
-.message-area, .active-users-area {
+.message-area, .active-users-area, .private-users-area {
     overflow: auto;
 }
 
-.message-area ul, .active-users-area ul {
+.message-area ul, .active-users-area ul, .private-users-area ul {
     list-style-type: none;
     padding: 0 20px 0 20px;
     margin: 0;
 }
 
-.message-area ul li, .active-users-area ul li {
+.message-area ul li, .active-users-area ul li, .private-users-area ul li {
     line-height: 1.5rem;
     padding: 15px 10px;
     margin: 0;
@@ -210,12 +211,12 @@ ul li p {
     word-wrap: break-word;
 }
 
-.user-message, .active-users-list li {
+.user-message, .active-users-list li, .private-users-list li {
     position: relative;
     padding-left: 50px;
 }
 
-.user-message i, .active-users-list li i {
+.user-message i, .active-users-list li .avatar, .private-users-list li .avatar {
     position: absolute;
     display: inline-block;
     left: 10px;
@@ -232,7 +233,7 @@ ul li p {
     line-height: 45px;
 }
 
-.user-message span, .active-users-list li span {
+.user-message span, .active-users-list li span, .private-users-list li span {
     position: absolute;
     left: 65px;
     top: 20px;
@@ -250,7 +251,7 @@ ul li p {
 
 
 /* Active users style */
-.active-users-container {
+.active-users-container, .private-users-container {
     width: 300px;
     float: left;
     height: 641px;
@@ -259,13 +260,54 @@ ul li p {
     margin-top: 30px;
     border-radius: 10px;
     border: 3px solid green;
-    margin-right: 20px;
 }
 
-.active-users-area {
+.active-users-area, .private-users-area {
     height: 558px;
 }
 
-.active-users-list li {
+.active-users-list li, .private-users-list li {
     min-height: 45px;
+}
+
+
+
+/*  */
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: initial;
+}
+
+.active-users-list li:hover, .private-users-list li:hover {
+    background-color: #2b2b2b;
+    cursor: pointer;
+}
+
+.private-users-container {
+    margin-left: 0;
+}
+
+#public-chat-btn {
+    padding: 3px;
+    width: 130px;
+    margin: 0;
+    position: absolute;
+    left: 20px;
+    top: 25px;
+    background-color: #6666eb;
+    border: 3px solid #0000ff;
+}
+
+.private-users-list li {
+    position: relative;
+}
+
+.new-message-reminder {
+    position: absolute;
+    left: 180px;
+    top: 21px;
+    z-index: 100;
 }

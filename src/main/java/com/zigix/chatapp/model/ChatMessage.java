@@ -12,6 +12,7 @@ import lombok.Setter;
 public class ChatMessage {
 
     private String sender;
+    private String channel;
     private String content;
     private MessageType type;
     private String[] activeUsers;
@@ -19,5 +20,4 @@ public class ChatMessage {
     public enum MessageType {
         CHAT, JOIN, LEAVE, UPDATE
     }
-
 }
