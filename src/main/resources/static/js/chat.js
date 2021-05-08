@@ -4,6 +4,8 @@ var messageInput = document.querySelector('#message-input');
 var messageList = document.querySelector('#message-list');
 var activeUsersList = document.querySelector('.active-users-list');
 var privateUsersList = document.querySelector('.private-users-list');
+var btnSend = document.querySelector('#button-send');
+var messageArea = document.querySelector('.message-area');
 
 var activeUElement = document.querySelector('#activeU');
 var privateUElement = document.querySelector('#privateU');
@@ -24,11 +26,18 @@ var allReminders = [];
 
 var backToPublicButtonElement = document.querySelector('#public-chat-btn');
 
-
 var colors = [
     '#2196F3', '#32c787', '#00BCD4', '#ff5652',
     '#ffc107', '#ff85af', '#FF9800', '#39bbb0'
 ];
+
+// enter event listener for send message button
+messageInput.addEventListener("keyup", function (event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        btnSend.click();
+    }
+});
 
 function connect() {
     username = document.getElementById('name').value.trim();
@@ -97,6 +106,7 @@ function onPublicMessageReceived(payload) {
         }
     }
 
+    scrollDown(messageArea);
     console.log(publicMessageQueue);
 }
 
@@ -118,6 +128,8 @@ function onPrivateMessageReceived(payload) {
         }
         createReminderOnUserElement(allReminders);
     }
+
+    scrollDown(messageArea);
 }
 
 function getAvatarColor(name) {
@@ -296,4 +308,8 @@ function removeReminderFromUserElement(name) {
             break;
         }
     }
+}
+
+function scrollDown(element) {
+    element.scrollTop = element.scrollHeight;
 }

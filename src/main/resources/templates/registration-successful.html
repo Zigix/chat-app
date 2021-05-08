@@ -1,12 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Confirmation</title>
+    <meta charset="utf-8">
+    <title>Registration successful</title>
+    <link th:href="@{css/main.css}" rel="stylesheet" type="text/css">
 </head>
 <body>
 
-    <h2>Registration successful, confirm ur email to get access to ur acc</h2>
+<div class="cnt">
+    <div id="confirmation-info-area">
+        <p>
+            Registration successful. Please check your mailbox to confirm your email and get access to the account.
+        </p>
+        <button type="button" id="back-to-login-btn" onclick="window.location.href='/login'">Go to Login</button>
+    </div>
+</div>
 
 </body>
 </html>
