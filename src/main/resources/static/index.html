@@ -1,25 +1,31 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Chat App</title>
 
-    <link th:href="@{/css/main.css}" type="text/css" rel="stylesheet">
+    <link href="css/main.css" type="text/css" rel="stylesheet">
 
 </head>
 <body>
 
-    <h2>Welcome to Chat App</h2>
+<h2 id="welcome-title"><i>Welcome to Chat App</i></h2>
 
-    <hr>
+<hr>
 
-    <br><br>
+<br><br>
 
+<div class="main-content">
     <a href="public-chat">
-        <button class="button-submit">Join to Chat</button>
+        <img src="img/chat-cloud.png" alt="Start chatting" id="chat-cloud">
     </a>
+</div>
+
+<footer>
+    <hr>
+    &copy; zigix
+    <a href="https://www.github.com/zigix/chat-app" target="_blank" id="github-link">See on github</a>
+</footer>
 
 </body>
 </html>
