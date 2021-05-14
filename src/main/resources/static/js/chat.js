@@ -168,6 +168,7 @@ function activeUserOnClick(name) {
             removeReminderFromUserElement(currentChannel);
         }
     }
+    scrollDown(messageArea);
 }
 
 function updatePrivateUsers(name) {
@@ -279,6 +280,7 @@ function backToPublicChat() {
 
         backToPublicButtonElement.classList.replace('visible', 'hidden');
     }
+    scrollDown(messageArea);
 }
 
 function createReminderOnUserElement(nameList) {

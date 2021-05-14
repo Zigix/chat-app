@@ -247,6 +247,7 @@ ul li p {
     font-size: 16px;
     color: #dddddd;
     text-align: left;
+    overflow-wrap: break-word;
 }
 
 
@@ -362,6 +363,7 @@ footer {
 /* registration successful page */
 .cnt {
     width: 100vw;
+    text-align: center;
 }
 
 #confirmation-info-area {
@@ -423,6 +425,7 @@ footer {
 
 .ok-button {
     text-transform: uppercase;
+    width: 120px;
     color: white;
     background-color: #5555ed;
     border: 3px solid #3333cb;
