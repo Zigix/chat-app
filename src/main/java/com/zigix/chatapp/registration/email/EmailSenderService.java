@@ -22,7 +22,7 @@ public class EmailSenderService implements EmailSender {
             MimeMessage mimeMessage = mailSender.createMimeMessage();
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, "utf-8");
 
-            messageHelper.setFrom("chatapp@test.com");
+            messageHelper.setFrom("chatixapplication@gmail.com");
             messageHelper.setTo(to);
             messageHelper.setSubject("Confirm your email");
             messageHelper.setText(content, true);

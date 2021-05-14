@@ -4,7 +4,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Log in to Chat App</title>
+    <title>Chatix</title>
 
     <link th:href="@{/css/main.css}" type="text/css" rel="stylesheet">
     <link th:href="@{/css/fontello.css}" type="text/css" rel="stylesheet">
@@ -14,51 +14,64 @@
 
 <input id="name" type="hidden" th:value="${username}">
 
-<div class="main-container">
+<div class="cnt">
+    <div class="main-container">
 
-    <div id="activeU" class="active-users-container">
-        <div class="active-users-title">
-            Active Users
-        </div>
-        <div class="active-users-area">
-            <ul class="active-users-list">
+        <div id="activeU" class="active-users-container">
+            <div class="active-users-title">
+                Active Users
+            </div>
+            <div class="active-users-area">
+                <ul class="active-users-list">
 
-            </ul>
-        </div>
-    </div>
-
-    <div id="public-chat" class="chat-container">
-        <button id="public-chat-btn"
-                onclick="backToPublicChat()"
-                class="hidden">Public</button>
-        <div class="chat-title">
-            <div>
-                Public Chat
+                </ul>
             </div>
         </div>
-        <div class="message-area">
-            <ul id="message-list">
 
-            </ul>
+        <div id="public-chat" class="chat-container">
+            <button id="public-chat-btn"
+                    onclick="backToPublicChat()"
+                    class="hidden">Public</button>
+            <div class="chat-title">
+                <div>
+                    Public Chat
+                </div>
+            </div>
+            <div class="message-area">
+                <ul id="message-list">
+
+                </ul>
+            </div>
+            <div class="input-area">
+                <input type="text" id="message-input" placeholder="Type your message">
+                <button type="submit" id="button-send" onclick="sendMessage()">Send</button>
+            </div>
         </div>
-        <div class="input-area">
-            <input type="text" id="message-input" placeholder="Type your message">
-            <button type="submit" id="button-send" onclick="sendMessage()">Send</button>
+
+        <div id="privateU" class="private-users-container">
+            <div class="private-users-title">
+                Private
+            </div>
+            <div class="private-users-area">
+                <ul class="private-users-list">
+
+                </ul>
+            </div>
         </div>
+
+        <div style="clear: both;"></div>
+
     </div>
 
-    <div id="privateU" class="private-users-container">
-        <div class="private-users-title">
-            Private
+    <div th:classappend="${isEmailConfirmed == false} ? 'visible' : 'hidden'" id="emailConf">
+        <div class="not-confirmed-email-block">
+            <p>Your email is not confirmed yet.</p>
+            <button type="button" class="ok-button"
+                    onclick="document.getElementById('emailConf').classList.replace('visible', 'hidden');">OK</button>
         </div>
-        <div class="private-users-area">
-            <ul class="private-users-list">
 
-            </ul>
-        </div>
+        <div class="not-confirmed-email-bg"></div>
     </div>
-
-    <div style="clear: both;"></div>
 
 </div>
 

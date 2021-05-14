@@ -1,6 +1,5 @@
 package com.zigix.chatapp.controller;
 
-import com.zigix.chatapp.AppUserService;
 import com.zigix.chatapp.registration.AppUserDTO;
 import com.zigix.chatapp.registration.RegistrationService;
 import lombok.AllArgsConstructor;
@@ -29,7 +28,7 @@ public class RegistrationController {
             @ModelAttribute("user") @Valid AppUserDTO appUserDTO,
             Errors errors) {
 
-        if(errors.hasErrors()) {
+        if (errors.hasErrors()) {
             return "registration";
         }
 
@@ -38,10 +37,11 @@ public class RegistrationController {
         return "registration-successful";
     }
 
-    @GetMapping("/confirm")
+    @GetMapping(value = "/confirm", params = {"token"})
     public String confirm(@RequestParam("token") String token) {
         registrationService.confirmToken(token);
 
         return "email-confirmed";
     }
+
 }

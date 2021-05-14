@@ -31,6 +31,7 @@ var colors = [
     '#ffc107', '#ff85af', '#FF9800', '#39bbb0'
 ];
 
+
 // enter event listener for send message button
 messageInput.addEventListener("keyup", function (event) {
     if (event.keyCode === 13) {

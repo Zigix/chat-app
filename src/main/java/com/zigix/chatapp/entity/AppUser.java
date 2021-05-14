@@ -28,8 +28,9 @@ public class AppUser implements UserDetails {
     @Enumerated(EnumType.STRING)
     private AppUserRole authority;
 
-    private Boolean enabled = false;
+    private Boolean enabled = true;
     private Boolean locked = false;
+    private Boolean emailConfirmed = false;
 
 
     public AppUser(String username, String email, String password, AppUserRole authority) {
@@ -76,5 +77,13 @@ public class AppUser implements UserDetails {
     @Override
     public boolean isEnabled() {
         return enabled;
+    }
+
+    public Boolean isEmailConfirmed() {
+        return emailConfirmed;
+    }
+
+    public void setEmailConfirmed(Boolean emailConfirmed) {
+        this.emailConfirmed = emailConfirmed;
     }
 }

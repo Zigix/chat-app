@@ -38,7 +38,7 @@ public class AppUserService implements UserDetailsService {
     }
 
     @Transactional
-    public int enableAppUserAccount(String email) {
-        return appUserRepository.enableAppUserAccount(email);
+    public int confirmUserEmail(String email) {
+        return appUserRepository.confirmUserEmail(email);
     }
 }
