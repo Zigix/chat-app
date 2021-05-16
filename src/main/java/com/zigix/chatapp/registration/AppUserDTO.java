@@ -7,7 +7,6 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 @Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldMatch(first = "password", second = "matchingPassword", message = "Confirmed password doesn't match")
@@ -26,4 +25,20 @@ public class AppUserDTO {
     private String password;
 
     private String matchingPassword;
+
+    public void setUsername(String username) {
+        this.username = username.trim();
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setMatchingPassword(String matchingPassword) {
+        this.matchingPassword = matchingPassword;
+    }
 }

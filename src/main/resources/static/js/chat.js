@@ -91,6 +91,7 @@ function sendMessage() {
     }
 
     messageInput.value = '';
+    scrollDown(messageArea);
 }
 
 function onPublicMessageReceived(payload) {
