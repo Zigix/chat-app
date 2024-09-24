@@ -16,6 +16,11 @@
 <input id="name" type="hidden" th:value="${username}">
 
 <div class="cnt">
+
+    <div class="nav">
+        <a th:href="@{/logout}"><button class="logout-btn">Logout</button></a>
+    </div>
+
     <div class="main-container">
 
         <div id="activeU" class="active-users-container">

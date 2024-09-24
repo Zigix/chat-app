@@ -2,13 +2,12 @@ package com.zigix.chatapp.controller;
 
 import com.zigix.chatapp.registration.AppUserDTO;
 import com.zigix.chatapp.registration.RegistrationService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/sign-up")

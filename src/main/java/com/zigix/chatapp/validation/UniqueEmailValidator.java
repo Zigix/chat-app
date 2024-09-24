@@ -1,10 +1,9 @@
 package com.zigix.chatapp.validation;
 
 import com.zigix.chatapp.AppUserService;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 import lombok.AllArgsConstructor;
-
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 
 @AllArgsConstructor
 public class UniqueEmailValidator implements ConstraintValidator<UniqueEmail, String> {

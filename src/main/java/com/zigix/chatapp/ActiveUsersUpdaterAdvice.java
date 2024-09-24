@@ -9,8 +9,6 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
-
 @Aspect
 @Component
 @Slf4j

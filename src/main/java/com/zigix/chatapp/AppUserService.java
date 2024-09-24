@@ -1,6 +1,8 @@
 package com.zigix.chatapp;
 
 import com.zigix.chatapp.entity.AppUser;
+import com.zigix.chatapp.entity.AppUserRole;
+import com.zigix.chatapp.registration.token.ConfirmationTokenRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -8,7 +10,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor

@@ -3,7 +3,9 @@ package com.zigix.chatapp.registration;
 import com.zigix.chatapp.AppUserService;
 import com.zigix.chatapp.entity.AppUser;
 import com.zigix.chatapp.entity.AppUserRole;
-import com.zigix.chatapp.exception.*;
+import com.zigix.chatapp.exception.EmailConfirmedException;
+import com.zigix.chatapp.exception.TokenExpiredException;
+import com.zigix.chatapp.exception.TokenNotFoundException;
 import com.zigix.chatapp.registration.email.EmailSenderService;
 import com.zigix.chatapp.registration.token.ConfirmationToken;
 import com.zigix.chatapp.registration.token.ConfirmationTokenService;
@@ -18,7 +20,6 @@ import java.io.FileReader;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
 
 @Service

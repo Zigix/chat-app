@@ -13,6 +13,8 @@ public interface ConfirmationTokenRepository extends JpaRepository<ConfirmationT
 
     Optional<ConfirmationToken> findByToken(String token);
 
+    void deleteAllByOwnerId(Long ownerId);
+
     @Modifying
     @Query("update ConfirmationToken ct set ct.confirmedAt=?2 where ct.token=?1")
     int setConfirmationTime(String token, LocalDateTime confirmationTime);

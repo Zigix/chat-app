@@ -1,12 +1,12 @@
 package com.zigix.chatapp.registration.token;
 
 import com.zigix.chatapp.entity.AppUser;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
