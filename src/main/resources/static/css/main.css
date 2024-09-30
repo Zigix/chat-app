@@ -6,7 +6,6 @@ html, body {
     text-align: center;
     color: #fff;
     font-size: 20px;
-    overflow: hidden;
 }
 
 .main-container {
@@ -439,7 +438,7 @@ footer {
 }
 
 .ok-button:focus {
-    box-shadow: 0px 0px 5px 2px #418fc9;
+    box-shadow: 0 0 5px 2px #418fc9;
 }
 
 .logout-btn {
@@ -455,7 +454,7 @@ footer {
 }
 
 .logout-btn:hover {
-    box-shadow: 0px 0px 5px 2px #418fc9;
+    box-shadow: 0 0 5px 2px #418fc9;
 }
 
 .main-container {
