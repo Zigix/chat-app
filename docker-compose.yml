@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  springboot-app:
+    image: openjdk:17-jdk
+    container_name: chatix-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    environment:
+      - SPRING_DATASOURCE_URL=${SPRING_DATASOURCE_URL}
+      - SPRING_DATASOURCE_USERNAME=${SPRING_DATASOURCE_USERNAME}
+      - SPRING_DATASOURCE_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
+    ports:
+      - "50000:8080"
+    depends_on:
+      - chatix-db
+
+  chatix-db:
+    image: mysql:8.0
+    container_name: chatix-db
+    env_file:
+      - .env
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - chatix-data:/var/lib/mysql
+
+volumes:
+  chatix-data:
