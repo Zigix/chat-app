@@ -11,12 +11,15 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class WebSecurityConfig {
 
+    private static final String ORIGIN_NAME = "https://chatix.pl";
 
     private final AppUserService appUserService;
 
@@ -54,4 +57,16 @@ public class WebSecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")
+                        .allowedOrigins(ORIGIN_NAME)
+                        .allowedMethods("GET", "POST", "PUT", "DELETE")
+                        .allowCredentials(true);
+            }
+        };
+    }
 }

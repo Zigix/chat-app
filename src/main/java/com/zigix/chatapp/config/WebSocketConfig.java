@@ -10,9 +10,12 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 @EnableWebSocketMessageBroker
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
+    private static final String ORIGIN_NAME = "https://chatix.pl";
+
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/chat")
+        registry.addEndpoint("/ws")
+                .setAllowedOrigins(ORIGIN_NAME)
                 .withSockJS();
     }
 

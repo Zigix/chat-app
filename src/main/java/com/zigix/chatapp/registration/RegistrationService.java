@@ -87,14 +87,14 @@ public class RegistrationService {
 
     private String prepareEmailContent(Map<String, String> toBeReplaced) {
         String pathToEmailTemplate = "email-template.html";
-        String emailContent = "";
+        StringBuilder emailContent = new StringBuilder();
         File file = new File(pathToEmailTemplate);
 
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
             String line;
 
             while ((line=bufferedReader.readLine()) != null) {
-                emailContent += line;
+                emailContent.append(line);
             }
         }
         catch (Exception e) {
@@ -102,10 +102,10 @@ public class RegistrationService {
         }
 
         for (String key : toBeReplaced.keySet()) {
-            emailContent = emailContent.replace(key, toBeReplaced.get(key));
+            emailContent = new StringBuilder(emailContent.toString().replace(key, toBeReplaced.get(key)));
         }
 
-        return emailContent;
+        return emailContent.toString();
     }
 
     private ConfirmationToken generateConfirmationTokenForUser(AppUser owner) {
