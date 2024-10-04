@@ -8,6 +8,8 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+import java.io.UnsupportedEncodingException;
+
 @Service
 @AllArgsConstructor
 public class EmailSenderService implements EmailSender {
@@ -16,20 +18,22 @@ public class EmailSenderService implements EmailSender {
 
     @Override
     @Async
-    public void sendEmail(String to, String content) {
+    public void sendEmail(EmailData emailData) {
         try {
             MimeMessage mimeMessage = mailSender.createMimeMessage();
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, "utf-8");
 
-            messageHelper.setFrom("chatixapplication@gmail.com");
-            messageHelper.setTo(to);
-            messageHelper.setSubject("Confirm your email");
-            messageHelper.setText(content, true);
+            messageHelper.setFrom("zigix@chatix.pl", "Chatix");
+            messageHelper.setTo(emailData.getRecipient());
+            messageHelper.setSubject(emailData.getSubject());
+            messageHelper.setText(emailData.getContent(), true);
 
             mailSender.send(mimeMessage);
         }
         catch (MessagingException e) {
             throw new IllegalStateException("Filed to send email");
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
         }
     }
 }

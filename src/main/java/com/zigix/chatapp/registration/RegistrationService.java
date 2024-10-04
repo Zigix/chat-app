@@ -6,6 +6,7 @@ import com.zigix.chatapp.entity.AppUserRole;
 import com.zigix.chatapp.exception.EmailConfirmedException;
 import com.zigix.chatapp.exception.TokenExpiredException;
 import com.zigix.chatapp.exception.TokenNotFoundException;
+import com.zigix.chatapp.registration.email.EmailData;
 import com.zigix.chatapp.registration.email.EmailSenderService;
 import com.zigix.chatapp.registration.token.ConfirmationToken;
 import com.zigix.chatapp.registration.token.ConfirmationTokenService;
@@ -82,7 +83,12 @@ public class RegistrationService {
 
         String emailContent = prepareEmailContent(toReplace);
 
-        emailSenderService.sendEmail(email, emailContent);
+        final EmailData emailData = EmailData.builder()
+                .recipient(email)
+                .subject("Confirm your email")
+                .content(emailContent).build();
+
+        emailSenderService.sendEmail(emailData);
     }
 
     private String prepareEmailContent(Map<String, String> toBeReplaced) {
