@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="202410041610" author="zigix">
+        <createTable tableName="app_user">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="username" type="varchar(255)"/>
+            <column name="email" type="varchar(255)"/>
+            <column name="password" type="varchar(255)"/>
+            <column name="authority" type="varchar(5)"/>
+            <column name="enabled" type="tinyint(1)"/>
+            <column name="locked" type="tinyint(1)"/>
+            <column name="email_confirmed" type="tinyint(1)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="202410041620" author="zigix">
+        <createTable tableName="confirmation_token">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="token" type="varchar(255)"/>
+            <column name="email" type="varchar(255)"/>
+            <column name="created_at" type="timestamp"/>
+            <column name="expires_at" type="timestamp"/>
+            <column name="confirmed_at" type="timestamp"/>
+            <column name="app_user_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_user_token" references="app_user(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

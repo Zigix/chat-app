@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  springboot-app:
+  chatix-app:
     image: openjdk:17-jdk
     container_name: chatix-app
     build:
@@ -15,8 +15,16 @@ services:
       - SPRING_DATASOURCE_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
     ports:
       - "50000:8080"
+    networks:
+      - chatix-network
     depends_on:
       - chatix-db
+
+  check-mysql-started:
+    image: jwilder/dockerize:0.6.1
+    depends_on:
+      - chatix-db
+    command: 'dockerize -wait=tcp://chatix-db:3306'
 
   chatix-db:
     image: mysql:8.0
@@ -30,6 +38,11 @@ services:
       - "3306:3306"
     volumes:
       - chatix-data:/var/lib/mysql
+    networks:
+      - chatix-network
 
 volumes:
   chatix-data:
+
+networks:
+  chatix-network:
